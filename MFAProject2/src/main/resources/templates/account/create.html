@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout">
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="/js/jquery-1.11.2.min.js"/>
+        <link rel="stylesheet" href="/js/bootstrap.min.js"/>
+        <title>User Create</title>
+    </head>
+
+    <body>
+
+        <div class="container"  layout:fragment="content">
+        <form th:action="@{/account/create}" th:object="${accountUserCreateForm}" method="POST">
+        <fieldset><legend>Sign up</legend></fieldset>
+        	<div th:if="${#fields.hasErrors('all')}" class="alert alert-danger">
+           		<p th:text="#{common.error}">ErrorMessage</p>
+        	</div>
+            <div class="form-group">
+                <label for="userName">ユーザ名
+                  <span th:if="${#fields.hasErrors('userName')}" class="text-danger" th:errors="*{userName}">Error</span>
+                </label>
+                <input type="text" class="form-control" id="userName" name="userName" th:field="*{userName}" placeholder="userName"/>
+            </div>
+            <div class="form-group">
+                <label for="password">パスワード
+                  <span th:if="${#fields.hasErrors('password')}" class="text-danger"  th:errors="*{password}">Error</span>
+                </label>
+                <input type="password" class="form-control" id="pass" name="password" th:field="*{password}" placeholder="password"/>
+            </div>
+            <div class="form-group">
+                <label for="userName">氏名
+                  <span th:if="${#fields.hasErrors('userName')}" class="text-danger" th:errors="*{name}">Error</span>
+                </label>
+                <input type="text" class="form-control" id="userName" name="userName" th:field="*{name}" placeholder="userName"/>
+            </div>
+            <div class="form-group">
+                <label for="mail">メールアドレス
+                  <span th:if="${#fields.hasErrors('mail')}" class="text-danger"  th:errors="*{mail}">Error</span>
+                </label>
+                <input type="text" class="form-control" id="mail" name="mail" th:field="*{mail}" placeholder="e-mail"/>
+            </div>
+            <div class="form-group">
+                <label for="useMfa">MFAを有効にする。
+                  <span th:if="${#fields.hasErrors('useMfa')}" class="text-danger"  th:errors="*{useMfa}">Error</span>
+                <input type="checkbox" class="form-control" id="useMfa" name="useMfa" th:field="*{useMfa}" th:value="1" placeholder="useMfa"/>
+                </label>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">送信する</button>
+                <button type="reset" class="btn">リセット</button>
+            </div>
+        </form>
+        </div>
+
+    </body>
+</html>

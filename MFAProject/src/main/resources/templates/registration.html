@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Registration</title>
+</head>
+<body>
+	<h1 th:utext="#{label.form.title}">form</h1>
+
+	<form action="/" method="POST" >
+		Use Two step verification <input type="checkbox" name="using2FA" value="true"/>
+		<br>
+		<input type="submit" value="登録">
+	</form>
+
+	<br>
+
+	<form method="get" th:action="@{/home}">
+        <input type="submit" value="homeへ">
+    </form>
+</body>
+</html>
