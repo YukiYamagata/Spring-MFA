@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>QR</title>
+</head>
+<body>
+    <h1>登録が完了しました!</h1>
+
+    <div data-th-if="${qr != null}">
+        Google AuthenticatorでQRコードを読み取ってください。
+        <br />
+        <img th:src="${qr}" src=""></img>
+    </div>
+
+    <a th:href="@{/loginForm}">
+        <button type="button">ログイン</button>
+    </a>
+</body>
+</html>

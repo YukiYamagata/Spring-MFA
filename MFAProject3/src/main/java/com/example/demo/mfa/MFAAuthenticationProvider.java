@@ -31,6 +31,7 @@ public class MFAAuthenticationProvider extends DaoAuthenticationProvider {
 
 		// MFAコードで認証する。
 		if (authentication.getDetails() instanceof MFAWebAuthenticationDetails) {
+			System.out.println("MFA認証開始");
 			String secret = ((AccountUserDetails) userDetails).getUser().getSecretKey();
 
 			// DBにSecretKeyが存在する場合のみMFAコードで認証する。
@@ -45,7 +46,7 @@ public class MFAAuthenticationProvider extends DaoAuthenticationProvider {
 					} catch (InvalidKeyException | NoSuchAlgorithmException e) {
 						throw new InternalAuthenticationServiceException("MFA Code verify failed", e);
 					}
-
+					System.out.println("MFA認証");
 				} else {
 					throw new BadCredentialsException("totpKey is null.");
 				}

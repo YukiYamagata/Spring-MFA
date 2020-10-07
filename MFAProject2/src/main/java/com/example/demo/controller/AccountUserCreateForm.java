@@ -11,11 +11,11 @@ import lombok.Data;
 @Data
 public class AccountUserCreateForm {
 	@NotBlank
-	@Length(min = 1, max = 20)
+	@Length(min = 1, max = 18)
 	private String userName;
 
 	@NotEmpty
-	@Length(min = 1, max = 20)
+	@Length(min = 1, max = 255)
 	private String password;
 
 	@NotEmpty
